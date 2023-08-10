@@ -1,18 +1,22 @@
 package br.com.bank;
 
-import org.junit.jupiter.api.Disabled;
-import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 import java.nio.file.Paths;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import org.junit.jupiter.api.Test;
 
 
 class CaminhoArquivoTest {
+	
+	@Test void deveRetornarInstanciaNula() {
+        CaminhoArquivo caminhoArquivo = CaminhoArquivo.getInstance(null);
+        assertNull(caminhoArquivo);
+	}
 
     @Test
-    @Disabled
-    public void deve_montar_caminho_para_arquivo() {
+    public void deveMontarCaminhoParaArquivo() {
 
         CaminhoArquivo caminhoArquivo = CaminhoArquivo.getInstance(1);
         assertEquals(Paths.get("/tmp/1"), caminhoArquivo.getDiretorio());
@@ -38,6 +42,9 @@ class CaminhoArquivoTest {
         assertEquals(Paths.get("/tmp/3"), caminhoArquivo.getDiretorio());
         assertEquals(Paths.get("/tmp/3/2001"), caminhoArquivo.getArquivo());
 
+        caminhoArquivo = CaminhoArquivo.getInstance(3001);
+        assertEquals(Paths.get("/tmp/4"), caminhoArquivo.getDiretorio());
+        assertEquals(Paths.get("/tmp/4/3001"), caminhoArquivo.getArquivo());
     }
 
 }
