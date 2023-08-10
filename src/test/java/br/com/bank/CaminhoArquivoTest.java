@@ -10,9 +10,10 @@ import org.junit.jupiter.api.Test;
 
 class CaminhoArquivoTest {
 	
-	@Test void deveRetornarInstanciaNula() {
-        CaminhoArquivo caminhoArquivo = CaminhoArquivo.getInstance(null);
-        assertNull(caminhoArquivo);
+	@Test
+	void deveRetornarInstanciaNula() {
+		CaminhoArquivo caminhoArquivo = CaminhoArquivo.getInstance(null);
+		assertNull(caminhoArquivo);
 	}
 
     @Test
